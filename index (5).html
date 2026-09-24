@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Amrita Singh – Cloud / IT Engineer Portfolio</title>
+<meta name="description" content="Portfolio of Amrita Singh, Cloud / IT Engineer in Stockholm. Infrastructure, identity, network security and automation projects.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FBF9FF;--alt:#F1EBFF;--card:#fff;--ink:#2A1A4D;--muted:#5F5480;--line:#E3D9F7;--brand:#7C3AED;--on:#fff;--shadow:0 10px 30px rgba(91,33,182,.10);
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#130B24;--alt:#1B1030;--card:#231540;--ink:#F1EBFF;--muted:#B7A8D6;--line:#3A2A5E;--brand:#A78BFA;--on:#1B1030;--shadow:0 10px 30px rgba(0,0,0,.35)}}
+:root[data-theme="dark"]{--bg:#130B24;--alt:#1B1030;--card:#231540;--ink:#F1EBFF;--muted:#B7A8D6;--line:#3A2A5E;--brand:#A78BFA;--on:#1B1030;--shadow:0 10px 30px rgba(0,0,0,.35)}
+html{scroll-padding-top:5rem;scroll-behavior:smooth;background:var(--bg)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.65 "Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:var(--brand)}
+a:focus-visible{outline:3px solid var(--brand);outline-offset:3px}
+.herobg a:focus-visible,.contact a:focus-visible{outline-color:#fff}
+.wrap{max-width:1040px;margin:0 auto;padding:0 1.25rem}
+h1,h2,h3{font-family:"Bricolage Grotesque",Georgia,serif;line-height:1.12;margin:0}
+.ic{width:1.25em;height:1.25em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+nav.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);box-shadow:0 1px 0 var(--line),0 6px 20px rgba(20,40,90,.06)}
+nav.top .wrap{display:flex;justify-content:space-between;align-items:center;padding-top:.8rem;padding-bottom:.8rem}
+.logo{font:700 1.15rem "Bricolage Grotesque",Georgia,serif;color:var(--ink);text-decoration:none}
+.links{display:flex;gap:1.5rem;align-items:center}
+.links a{color:var(--ink);text-decoration:none;font-weight:500}
+.links a:hover{color:var(--brand)}
+.links a.cta{background:var(--brand);color:var(--on);padding:.5rem 1.2rem;border-radius:999px;font-weight:600}
+.links a.cta:hover{color:var(--on);opacity:.9}
+.herobg{background:radial-gradient(circle at 85% 20%,rgba(6,182,212,.55),transparent 45%),linear-gradient(135deg,#1B1464 0%,#2B4EFF 65%,#4F46E5 100%);color:#fff;padding-bottom:5.5rem}
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:2.5rem;align-items:center;padding:4rem 0 1rem}
+.hero h1{font-size:clamp(2.5rem,6vw,4.2rem);font-weight:700;letter-spacing:-.025em}
+.role{font:500 1.25rem "Bricolage Grotesque",Georgia,serif;color:#A5F3FC;margin:.7rem 0 1.2rem}
+.hero p{max-width:36rem;color:rgba(255,255,255,.88);margin:0 0 1rem}
+.avail{display:inline-flex;align-items:center;gap:.6rem;font-weight:500;margin:.4rem 0 1.5rem;background:rgba(255,255,255,.14);padding:.4rem .9rem;border-radius:999px;font-size:.95rem}
+.avail::before{content:"";width:.65rem;height:.65rem;border-radius:50%;background:#34D399;flex:none}
+.icons{display:flex;flex-wrap:wrap;gap:.7rem}
+.iconbtn{display:inline-flex;align-items:center;gap:.55rem;padding:.7rem 1.2rem;border-radius:999px;border:1.5px solid rgba(255,255,255,.45);background:rgba(255,255,255,.12);color:#fff;text-decoration:none;font-weight:600;transition:background .15s}
+.iconbtn:hover{background:rgba(255,255,255,.25)}
+.iconbtn.main{background:#fff;border-color:#fff;color:#1B1464}
+.iconbtn.main:hover{background:#EEF2FF}
+.panel{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);border-radius:22px;padding:1rem;backdrop-filter:blur(6px)}
+.diagram{width:100%;height:auto;display:block}
+.diagram .box{fill:#fff}
+.diagram text{font:600 13px "Public Sans",sans-serif;fill:#0B1730}
+.diagram .sub{font-weight:400;font-size:11px;fill:#51617A}
+.diagram .link{stroke:rgba(255,255,255,.7);stroke-width:2}
+.diagram .tunnel{stroke:#67E8F9;stroke-width:3;stroke-dasharray:8 6;fill:none;animation:flow 1.6s linear infinite}
+@keyframes flow{to{stroke-dashoffset:-28}}
+@media (prefers-reduced-motion:reduce){.diagram .tunnel{animation:none}html{scroll-behavior:auto}.card{transition:none!important}}
+.stats{margin-top:-2.6rem;position:relative}
+.statbar{display:grid;grid-template-columns:repeat(4,1fr);background:var(--card);border-radius:18px;box-shadow:var(--shadow);border:1px solid var(--line);padding:1.3rem 0}
+.statbar div{text-align:center;padding:0 .8rem;border-right:1px solid var(--line)}
+.statbar div:last-child{border:0}
+.statbar b{display:block;font:700 1.9rem "Bricolage Grotesque",Georgia,serif;color:var(--brand)}
+.statbar span{color:var(--muted);font-size:.92rem}
+section{padding:4rem 0}
+#projects,#about{background:var(--alt)}
+h2.sec{font-size:clamp(1.7rem,3.4vw,2.4rem);margin-bottom:.5rem}
+.sub2{color:var(--muted);margin:0 0 2rem;max-width:38rem}
+.build{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.1rem}
+.build li{display:flex;gap:1rem;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:1.2rem;box-shadow:var(--shadow)}
+.dot,.badge{width:2.9rem;height:2.9rem;display:grid;place-items:center;border-radius:13px;background:var(--c);color:#fff;font-size:1.3rem;flex:none}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.3rem}
+.card{display:flex;flex-direction:column;gap:.85rem;padding:1.6rem;background:var(--card);border:1px solid var(--line);border-top:5px solid var(--c);border-radius:16px;box-shadow:var(--shadow);color:var(--ink);text-decoration:none;transition:transform .15s}
+.card:hover{transform:translateY(-4px)}
+.card h3{font-size:1.25rem}
+.card p{margin:0;color:var(--muted);font-size:.98rem}
+.tags{display:flex;flex-wrap:wrap;gap:.4rem}
+.tags i,.chips span{font-style:normal;font-size:.82rem;padding:.14rem .65rem;border-radius:999px;background:color-mix(in srgb,var(--c,var(--brand)) 13%,var(--card));border:1px solid color-mix(in srgb,var(--c,var(--brand)) 35%,var(--line))}
+.more{margin-top:auto;display:inline-flex;align-items:center;gap:.4rem;font-weight:600;color:var(--brand)}
+.skgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.1rem}
+.sk{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--c);border-radius:14px;padding:1.2rem 1.3rem;box-shadow:var(--shadow)}
+.sk h3{font-size:1.05rem;margin-bottom:.7rem}
+.chips{display:flex;flex-wrap:wrap;gap:.4rem}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:1.3rem}
+.about>div{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:1.8rem;box-shadow:var(--shadow)}
+.about h2{font-size:1.5rem!important}
+.about p{margin:0 0 1rem;max-width:34rem}
+.contact{background:radial-gradient(circle at 15% 20%,rgba(6,182,212,.5),transparent 45%),linear-gradient(135deg,#1B1464 0%,#2B4EFF 70%,#4F46E5 100%);color:#fff}
+.contact p{max-width:36rem;color:rgba(255,255,255,.9);margin:0 0 1.6rem}
+footer{padding:1.5rem 0;color:var(--muted);font-size:.9rem}
+@media (max-width:760px){.hero,.about{grid-template-columns:1fr}.links .hide{display:none}.statbar{grid-template-columns:1fr 1fr;row-gap:1rem}.statbar div:nth-child(2){border:0}}
+.who{display:flex;align-items:center;gap:1.3rem;margin-bottom:.4rem}
+.avatar{width:8.5rem;height:8.5rem;border-radius:50%;object-fit:cover;object-position:50% 20%;border:4px solid rgba(255,255,255,.85);box-shadow:0 10px 30px rgba(0,0,0,.3);flex:none}
+@media (max-width:760px){.avatar{width:6rem;height:6rem}}
+.herobg{background:radial-gradient(circle at 85% 15%,rgba(255,255,255,.75),transparent 45%),linear-gradient(135deg,#F3EEFF 0%,#E4D9FF 55%,#D1BEFF 100%);color:#2E1065}
+.herobg a:focus-visible{outline-color:#5B21B6}
+.hero h1{color:#2E1065}
+.role{color:#6D28D9}
+.hero p{color:#4B3A75}
+.welcome{font:600 1.3rem/1.4 "Bricolage Grotesque",Georgia,serif;color:#5B21B6;margin:0 0 .9rem;max-width:34rem}
+.avail{background:rgba(255,255,255,.75);color:#2E1065}
+.iconbtn{background:#7C3AED;border-color:#7C3AED;color:#fff}
+.iconbtn:hover{background:#6D28D9}
+.panel{background:rgba(255,255,255,.55);border-color:rgba(124,58,237,.25)}
+.diagram .box{fill:#fff;stroke:#DDD0FF;stroke-width:1.5}
+.diagram .link{stroke:#A78BFA}
+.diagram .tunnel{stroke:#7C3AED}
+.avatar{border-color:#fff}
+.contact{background:radial-gradient(circle at 15% 20%,rgba(196,181,253,.45),transparent 45%),linear-gradient(135deg,#5B21B6 0%,#7C3AED 70%,#9333EA 100%)}
+.contact .iconbtn{background:#fff;border-color:#fff;color:#5B21B6}
+.contact .iconbtn:hover{background:#F3EEFF}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="i-github" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></symbol>
+<symbol id="i-in" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></symbol>
+<symbol id="i-mail" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></symbol>
+<symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+<symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></symbol>
+<symbol id="i-key" viewBox="0 0 24 24"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.78 7.78 5.5 5.5 0 0 1 7.78-7.78zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></symbol>
+<symbol id="i-server" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></symbol>
+<symbol id="i-cpu" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"/></symbol>
+<symbol id="i-db" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></symbol>
+<symbol id="i-ext" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></symbol>
+</defs></svg>
+
+<nav class="top"><div class="wrap">
+  <a class="logo" href="#top">Amrita Singh</a>
+  <div class="links"><a class="hide" href="#projects">Projects</a><a class="hide" href="#skills">Skills</a><a class="hide" href="#about">About</a><a class="cta" href="#contact">Contact</a></div>
+</div></nav>
+
+<header class="herobg" id="top"><div class="wrap">
+  <div class="hero">
+    <div>
+      <div class="who"><img class="avatar" alt="Portrait of Amrita Singh" width="270" height="275" src="data:image/jpeg;base64,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"><h1>Hi, I'm Amrita.</h1></div>
+      <div class="role">Cloud / IT Engineer · Infrastructure &amp; Security</div>
+      <p>I'm studying Cloud &amp; ICT Engineering at Lernia YH in Stockholm and building hands-on projects in identity management, network security and automation. I don't just follow tutorials: I build real systems, break them, fix them and document why.</p>
+      <div class="welcome">Welcome to my portfolio! Take a look around at the systems I've built, and say hello if something catches your eye.</div>
+      <div class="avail">Open to internships and junior cloud / IT roles across Sweden</div>
+      <div class="icons">
+        <a class="iconbtn" href="mailto:aemy.amrita@gmail.com"><svg class="ic"><use href="#i-mail"/></svg>Email me</a>
+        <a class="iconbtn" href="https://github.com/secexpert123"><svg class="ic"><use href="#i-github"/></svg>GitHub</a>
+        <a class="iconbtn" href="https://linkedin.com/in/amrita162"><svg class="ic"><use href="#i-in"/></svg>LinkedIn</a>
+      </div>
+    </div>
+    <div class="panel"><svg class="diagram" viewBox="0 0 320 300" role="img" aria-label="Segmented network with a WireGuard tunnel">
+      <rect class="box" x="10" y="10" width="140" height="70" rx="10"/><text x="24" y="42">Ubuntu server</text><text class="sub" x="24" y="62">SSSD + Realmd</text>
+      <rect class="box" x="170" y="10" width="140" height="70" rx="10"/><text x="184" y="42">Active Directory</text><text class="sub" x="184" y="62">DNS · DHCP · GPO</text>
+      <path class="link" d="M80 80 V130 M240 80 V130"/>
+      <rect class="box" x="10" y="130" width="300" height="50" rx="10"/><text x="24" y="160">VLAN segmentation, dual-NIC</text>
+      <path class="tunnel" d="M80 180 V220 H240 V180"/>
+      <rect class="box" x="90" y="220" width="140" height="60" rx="10"/><text x="106" y="248">WireGuard VPN</text><text class="sub" x="106" y="266">SSH hardening</text>
+    </svg></div>
+  </div>
+</div></header>
+<div class="stats"><div class="wrap"><div class="statbar">
+  <div><b>5</b><span>hands-on projects</span></div>
+  <div><b>54/54</b><span>automated tests passing</span></div>
+  <div><b>AZ-900</b><span>Azure certified</span></div>
+  <div><b>3</b><span>languages spoken</span></div>
+</div></div></div>
+
+<section>
+  <div class="wrap">
+    <h2 class="sec">What I build</h2>
+    <p class="sub2">Real systems, tested and documented.</p>
+    <ul class="build">
+      <li style="--c:#7C3AED"><i class="dot"><svg class="ic"><use href="#i-db"/></svg></i><span>ERP systems with REST APIs, automated testing and database backends</span></li>
+      <li style="--c:#9333EA"><i class="dot"><svg class="ic"><use href="#i-server"/></svg></i><span>Active Directory infrastructure with PowerShell automation and IGDLA access models</span></li>
+      <li style="--c:#6366F1"><i class="dot"><svg class="ic"><use href="#i-shield"/></svg></i><span>Secure cloud networks with dual-NIC segmentation, WireGuard VPN and Linux/Windows integration</span></li>
+      <li style="--c:#C026D3"><i class="dot"><svg class="ic"><use href="#i-key"/></svg></i><span>Identity and access management with Microsoft Entra ID, MFA, SSPR and RBAC</span></li>
+      <li style="--c:#A855F7"><i class="dot"><svg class="ic"><use href="#i-cpu"/></svg></i><span>AI-powered tools for network troubleshooting and diagnostics</span></li>
+    </ul>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <h2 class="sec">Featured projects</h2>
+    <p class="sub2">Each card opens the project on GitHub.</p>
+    <div class="grid">
+      <a class="card" style="--c:#6366F1" href="https://github.com/secexpert123/Network-Security-Zero-Trust-Lab"><span class="badge"><svg class="ic"><use href="#i-shield"/></svg></span><h3>Network Security &amp; Zero Trust Lab</h3><div class="tags"><i>Ubuntu 22.04</i><i>Windows Server</i><i>WireGuard</i><i>UFW</i><i>SSSD</i><i>Nginx</i></div><p>A secure virtual datacenter with dual-NIC segmentation that keeps the public web subnet isolated from the management subnet. Ubuntu nodes join Windows AD via SSSD/Realmd, with WireGuard for encrypted admin access, SSH hardening and interface-level firewall rules.</p><span class="more">View on GitHub <svg class="ic"><use href="#i-ext"/></svg></span></a>
+      <a class="card" style="--c:#C026D3" href="https://github.com/secexpert123/Cloud-Identity-Access-Management"><span class="badge"><svg class="ic"><use href="#i-key"/></svg></span><h3>Cloud Identity &amp; Access Management</h3><div class="tags"><i>Entra ID</i><i>RBAC</i><i>MFA</i><i>SSPR</i><i>Sign-in auditing</i></div><p>A hands-on lab covering the full identity lifecycle in Microsoft Entra ID: user provisioning, least-privilege RBAC, MFA and SSPR, security groups and sign-in log auditing.</p><span class="more">View on GitHub <svg class="ic"><use href="#i-ext"/></svg></span></a>
+      <a class="card" style="--c:#9333EA" href="https://github.com/secexpert123/Enterprise-Infrastructure-AD-DS"><span class="badge"><svg class="ic"><use href="#i-server"/></svg></span><h3>Enterprise Infrastructure &amp; AD DS</h3><div class="tags"><i>PowerShell</i><i>AD DS</i><i>IGDLA</i><i>GPO</i><i>VLAN</i></div><p>Windows Server infrastructure built for EazyPro Technologies AB: DNS, DHCP and a 4-segment VLAN design (Management/Users/IoT/Guest). Idempotent PowerShell automation with logging, error handling and an IGDLA security group design that is safe to re-run.</p><span class="more">View on GitHub <svg class="ic"><use href="#i-ext"/></svg></span></a>
+      <a class="card" style="--c:#A855F7" href="https://github.com/secexpert123/AI-Network-Troubleshooter-CyberSentry-AI"><span class="badge"><svg class="ic"><use href="#i-cpu"/></svg></span><h3>AI Network Troubleshooter (CyberSentry AI)</h3><div class="tags"><i>n8n</i><i>Google Gemini</i><i>AI agent</i></div><p>An AI agent that analyses network troubleshooting requests submitted through a form and suggests technical solutions. Built to explore how AI can support IT support and diagnostics.</p><span class="more">View on GitHub <svg class="ic"><use href="#i-ext"/></svg></span></a>
+      <a class="card" style="--c:#7C3AED" href="https://github.com/secexpert123/Industrial-ERP-Ice-Cream-Factory"><span class="badge"><svg class="ic"><use href="#i-db"/></svg></span><h3>Industrial ERP (Ice Cream Factory)</h3><div class="tags"><i>Python</i><i>FastAPI</i><i>SQLAlchemy</i><i>SQLite</i><i>54/54 tests</i></div><p>An ERP system for a wholesale ice cream manufacturer with a 4-layer architecture: terminal UI, REST API, web dashboard and a PowerShell client on one business engine. Rebuilt from flat CSV files into a tested, secured, database-backed platform for Windows and Linux.</p><span class="more">View on GitHub <svg class="ic"><use href="#i-ext"/></svg></span></a>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <h2 class="sec">Skills</h2>
+    <p class="sub2">The tools and technologies I work with.</p>
+    <div class="skgrid">
+      <div class="sk" style="--c:#C026D3"><h3>Identity &amp; Access</h3><div class="chips"><span>Entra ID</span><span>Active Directory DS</span><span>SSSD</span><span>RBAC</span><span>IGDLA</span><span>MFA</span><span>SSPR</span></div></div>
+      <div class="sk" style="--c:#9333EA"><h3>Cloud &amp; Productivity</h3><div class="chips"><span>Microsoft Azure (AZ-900)</span><span>AWS</span><span>Microsoft 365</span><span>Virtuozzo</span></div></div>
+      <div class="sk" style="--c:#6366F1"><h3>Virtualization</h3><div class="chips"><span>VMware</span><span>Hyper-V</span></div></div>
+      <div class="sk" style="--c:#7C3AED"><h3>Networking &amp; Security</h3><div class="chips"><span>WireGuard VPN</span><span>UFW</span><span>Dual-NIC segmentation</span><span>SSH hardening</span><span>Nginx</span><span>Zero Trust</span></div></div>
+      <div class="sk" style="--c:#A855F7"><h3>Operating Systems</h3><div class="chips"><span>Ubuntu 22.04 LTS</span><span>Windows Server 2022</span></div></div>
+      <div class="sk" style="--c:#C026D3"><h3>Automation &amp; IaC</h3><div class="chips"><span>PowerShell</span><span>Python</span><span>Bash</span><span>Git/GitHub</span><span>Terraform (learning)</span><span>CI/CD</span></div></div>
+      <div class="sk" style="--c:#9333EA"><h3>Development</h3><div class="chips"><span>FastAPI</span><span>SQLAlchemy</span><span>SQLite</span><span>REST APIs</span><span>Pydantic</span><span>JSON</span></div></div>
+      <div class="sk" style="--c:#6366F1"><h3>ERP &amp; Enterprise</h3><div class="chips"><span>SAP ERP Foundations</span><span>DNS</span><span>DHCP</span></div></div>
+      <div class="sk" style="--c:#7C3AED"><h3>AI-assisted development</h3><div class="chips"><span>Claude AI</span><span>GitHub Copilot</span><span>n8n</span><span>Google Gemini</span><span>Prompt engineering</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap about">
+    <div>
+      <h2 class="sec">About me</h2>
+      <p>I hold a bachelor's degree in Behavioral Science and I'm fluent in Swedish and English, spoken and written. That combination means I understand the technology and the people who use it.</p>
+      <p>I'm a Swedish citizen and a member of Women in Tech Sweden.</p>
+    </div>
+    <div>
+      <h2 class="sec">My path</h2>
+      <p>I moved to Sweden in 2019, learned Swedish, became a citizen and worked as a pedagog in the municipal sector from 2022 to 2025 (currently on study leave). Learning fast in a new country is what I now bring to cloud and infrastructure work.</p>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <h2 class="sec">Let's talk</h2>
+    <p>Working on cloud, infrastructure or IT support and have room for someone who learns fast? Get in touch and I'll walk you through my labs.</p>
+    <div class="icons">
+      <a class="iconbtn" href="mailto:aemy.amrita@gmail.com"><svg class="ic"><use href="#i-mail"/></svg>aemy.amrita@gmail.com</a>
+      <a class="iconbtn" href="tel:+46763396519"><svg class="ic"><use href="#i-phone"/></svg>+46 763 396 519</a>
+      <a class="iconbtn" href="https://linkedin.com/in/amrita162"><svg class="ic"><use href="#i-in"/></svg>LinkedIn</a>
+      <a class="iconbtn" href="https://github.com/secexpert123"><svg class="ic"><use href="#i-github"/></svg>GitHub</a>
+    </div>
+  </div>
+</section>
+<div class="wrap"><footer>© 2026 Amrita Singh · Stockholm, Sweden</footer></div>
+</body>
+</html>
