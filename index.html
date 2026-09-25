@@ -51,18 +51,25 @@ nav.top .wrap{display:flex;justify-content:space-between;align-items:center;padd
 .diagram .tunnel{stroke:#67E8F9;stroke-width:3;stroke-dasharray:8 6;fill:none;animation:flow 1.6s linear infinite}
 @keyframes flow{to{stroke-dashoffset:-28}}
 @media (prefers-reduced-motion:reduce){.diagram .tunnel{animation:none}html{scroll-behavior:auto}.card{transition:none!important}}
-.stats{margin-top:-2.6rem;position:relative}
-.statbar{display:grid;grid-template-columns:repeat(4,1fr);background:var(--card);border-radius:18px;box-shadow:var(--shadow);border:1px solid var(--line);padding:1.3rem 0}
-.statbar div{text-align:center;padding:0 .8rem;border-right:1px solid var(--line)}
-.statbar div:last-child{border:0}
-.statbar b{display:block;font:700 1.9rem "Bricolage Grotesque",Georgia,serif;color:var(--brand)}
-.statbar span{color:var(--muted);font-size:.92rem}
 section{padding:4rem 0}
 #projects,#about{background:var(--alt)}
 h2.sec{font-size:clamp(1.7rem,3.4vw,2.4rem);margin-bottom:.5rem}
 .sub2{color:var(--muted);margin:0 0 2rem;max-width:38rem}
 .build{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.1rem}
-.build li{display:flex;gap:1rem;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:1.2rem;box-shadow:var(--shadow)}
+.build li{display:flex}
+.buildcard{width:100%;display:flex;gap:1rem;align-items:flex-start;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:1.2rem;box-shadow:var(--shadow);font:inherit;color:var(--ink);cursor:pointer;transition:transform .15s,box-shadow .15s}
+.buildcard:hover,.buildcard:focus-visible{transform:translateY(-3px);box-shadow:0 14px 34px rgba(91,33,182,.16)}
+.buildcard:focus-visible{outline:3px solid var(--brand);outline-offset:2px}
+
+.modal-overlay{position:fixed;inset:0;background:rgba(20,10,40,.55);display:flex;align-items:center;justify-content:center;padding:1.25rem;z-index:50}
+.modal-overlay[hidden]{display:none}
+.modal{background:var(--card);border-radius:18px;max-width:480px;width:100%;padding:1.6rem;box-shadow:0 20px 60px rgba(0,0,0,.35);position:relative;max-height:85vh;overflow-y:auto}
+.modal-close{position:absolute;top:.8rem;right:.9rem;background:none;border:none;font-size:1.6rem;line-height:1;color:var(--muted);cursor:pointer;padding:.2rem .5rem;border-radius:8px}
+.modal-close:hover{background:var(--alt);color:var(--ink)}
+.modal h3{font-size:1.2rem;margin:0 .5rem .9rem 0}
+.modal-img{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--alt);margin-bottom:.9rem}
+.modal-img svg{display:block;width:100%;height:auto}
+.modal p.cap{margin:0;color:var(--muted);font-size:.95rem;line-height:1.55}
 .dot,.badge{width:2.9rem;height:2.9rem;display:grid;place-items:center;border-radius:13px;background:var(--c);color:#fff;font-size:1.3rem;flex:none}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.3rem}
 .card{display:flex;flex-direction:column;gap:.85rem;padding:1.6rem;background:var(--card);border:1px solid var(--line);border-top:5px solid var(--c);border-radius:16px;box-shadow:var(--shadow);color:var(--ink);text-decoration:none;transition:transform .15s}
@@ -83,7 +90,7 @@ h2.sec{font-size:clamp(1.7rem,3.4vw,2.4rem);margin-bottom:.5rem}
 .contact{background:radial-gradient(circle at 15% 20%,rgba(6,182,212,.5),transparent 45%),linear-gradient(135deg,#1B1464 0%,#2B4EFF 70%,#4F46E5 100%);color:#fff}
 .contact p{max-width:36rem;color:rgba(255,255,255,.9);margin:0 0 1.6rem}
 footer{padding:1.5rem 0;color:var(--muted);font-size:.9rem}
-@media (max-width:760px){.hero,.about{grid-template-columns:1fr}.links .hide{display:none}.statbar{grid-template-columns:1fr 1fr;row-gap:1rem}.statbar div:nth-child(2){border:0}}
+@media (max-width:760px){.hero,.about{grid-template-columns:1fr}.links .hide{display:none}}
 .who{display:flex;align-items:center;gap:1.3rem;margin-bottom:.4rem}
 .avatar{width:8.5rem;height:8.5rem;border-radius:50%;object-fit:cover;object-position:50% 20%;border:4px solid rgba(255,255,255,.85);box-shadow:0 10px 30px rgba(0,0,0,.3);flex:none}
 @media (max-width:760px){.avatar{width:6rem;height:6rem}}
@@ -122,7 +129,7 @@ footer{padding:1.5rem 0;color:var(--muted);font-size:.9rem}
 
 <nav class="top"><div class="wrap">
   <a class="logo" href="#top">Amrita Singh</a>
-  <div class="links"><a class="hide" href="#projects">Projects</a><a class="hide" href="#skills">Skills</a><a class="hide" href="#about">About</a><a class="cta" href="#contact">Contact</a></div>
+  <div class="links"><a class="hide" href="#projects">Projects</a><a class="hide" href="#skills">Skills</a><a class="hide" href="#certifications">Certifications</a><a class="hide" href="#about">About</a><a class="cta" href="#contact">Contact</a></div>
 </div></nav>
 
 <header class="herobg" id="top"><div class="wrap">
@@ -133,11 +140,6 @@ footer{padding:1.5rem 0;color:var(--muted);font-size:.9rem}
       <p>I'm studying Cloud &amp; ICT Engineering at Lernia YH in Stockholm and building hands-on projects in identity management, network security and automation. I don't just follow tutorials: I build real systems, break them, fix them and document why.</p>
       <div class="welcome">Welcome to my portfolio! Take a look around at the systems I've built, and say hello if something catches your eye.</div>
       <div class="avail">Open to internships and junior cloud / IT roles across Sweden</div>
-      <div class="icons">
-        <a class="iconbtn" href="mailto:aemy.amrita@gmail.com"><svg class="ic"><use href="#i-mail"/></svg>Email me</a>
-        <a class="iconbtn" href="https://github.com/secexpert123"><svg class="ic"><use href="#i-github"/></svg>GitHub</a>
-        <a class="iconbtn" href="https://linkedin.com/in/amrita162"><svg class="ic"><use href="#i-in"/></svg>LinkedIn</a>
-      </div>
     </div>
     <div class="panel"><svg class="diagram" viewBox="0 0 320 300" role="img" aria-label="Segmented network with a WireGuard tunnel">
       <rect class="box" x="10" y="10" width="140" height="70" rx="10"/><text x="24" y="42">Ubuntu server</text><text class="sub" x="24" y="62">SSSD + Realmd</text>
@@ -149,23 +151,17 @@ footer{padding:1.5rem 0;color:var(--muted);font-size:.9rem}
     </svg></div>
   </div>
 </div></header>
-<div class="stats"><div class="wrap"><div class="statbar">
-  <div><b>5</b><span>hands-on projects</span></div>
-  <div><b>54/54</b><span>automated tests passing</span></div>
-  <div><b>AZ-900</b><span>Azure certified</span></div>
-  <div><b>3</b><span>languages spoken</span></div>
-</div></div></div>
 
 <section>
   <div class="wrap">
     <h2 class="sec">What I build</h2>
     <p class="sub2">Real systems, tested and documented.</p>
     <ul class="build">
-      <li style="--c:#7C3AED"><i class="dot"><svg class="ic"><use href="#i-db"/></svg></i><span>ERP systems with REST APIs, automated testing and database backends</span></li>
-      <li style="--c:#9333EA"><i class="dot"><svg class="ic"><use href="#i-server"/></svg></i><span>Active Directory infrastructure with PowerShell automation and IGDLA access models</span></li>
-      <li style="--c:#6366F1"><i class="dot"><svg class="ic"><use href="#i-shield"/></svg></i><span>Secure cloud networks with dual-NIC segmentation, WireGuard VPN and Linux/Windows integration</span></li>
-      <li style="--c:#C026D3"><i class="dot"><svg class="ic"><use href="#i-key"/></svg></i><span>Identity and access management with Microsoft Entra ID, MFA, SSPR and RBAC</span></li>
-      <li style="--c:#A855F7"><i class="dot"><svg class="ic"><use href="#i-cpu"/></svg></i><span>AI-powered tools for network troubleshooting and diagnostics</span></li>
+      <li><button type="button" class="buildcard" style="--c:#7C3AED" data-modal="build-erp"><i class="dot"><svg class="ic"><use href="#i-db"/></svg></i><span>ERP systems with REST APIs, automated testing and database backends</span></button></li>
+      <li><button type="button" class="buildcard" style="--c:#9333EA" data-modal="build-ad"><i class="dot"><svg class="ic"><use href="#i-server"/></svg></i><span>Active Directory infrastructure with PowerShell automation and IGDLA access models</span></button></li>
+      <li><button type="button" class="buildcard" style="--c:#6366F1" data-modal="build-net"><i class="dot"><svg class="ic"><use href="#i-shield"/></svg></i><span>Secure cloud networks with dual-NIC segmentation, WireGuard VPN and Linux/Windows integration</span></button></li>
+      <li><button type="button" class="buildcard" style="--c:#C026D3" data-modal="build-iam"><i class="dot"><svg class="ic"><use href="#i-key"/></svg></i><span>Identity and access management with Microsoft Entra ID, MFA, SSPR and RBAC</span></button></li>
+      <li><button type="button" class="buildcard" style="--c:#A855F7" data-modal="build-ai"><i class="dot"><svg class="ic"><use href="#i-cpu"/></svg></i><span>AI-powered tools for network troubleshooting and diagnostics</span></button></li>
     </ul>
   </div>
 </section>
@@ -189,15 +185,21 @@ footer{padding:1.5rem 0;color:var(--muted);font-size:.9rem}
     <h2 class="sec">Skills</h2>
     <p class="sub2">The tools and technologies I work with.</p>
     <div class="skgrid">
-      <div class="sk" style="--c:#C026D3"><h3>Identity &amp; Access</h3><div class="chips"><span>Entra ID</span><span>Active Directory DS</span><span>SSSD</span><span>RBAC</span><span>IGDLA</span><span>MFA</span><span>SSPR</span></div></div>
-      <div class="sk" style="--c:#9333EA"><h3>Cloud &amp; Productivity</h3><div class="chips"><span>Microsoft Azure (AZ-900)</span><span>AWS</span><span>Microsoft 365</span><span>Virtuozzo</span></div></div>
-      <div class="sk" style="--c:#6366F1"><h3>Virtualization</h3><div class="chips"><span>VMware</span><span>Hyper-V</span></div></div>
-      <div class="sk" style="--c:#7C3AED"><h3>Networking &amp; Security</h3><div class="chips"><span>WireGuard VPN</span><span>UFW</span><span>Dual-NIC segmentation</span><span>SSH hardening</span><span>Nginx</span><span>Zero Trust</span></div></div>
-      <div class="sk" style="--c:#A855F7"><h3>Operating Systems</h3><div class="chips"><span>Ubuntu 22.04 LTS</span><span>Windows Server 2022</span></div></div>
-      <div class="sk" style="--c:#C026D3"><h3>Automation &amp; IaC</h3><div class="chips"><span>PowerShell</span><span>Python</span><span>Bash</span><span>Git/GitHub</span><span>Terraform (learning)</span><span>CI/CD</span></div></div>
-      <div class="sk" style="--c:#9333EA"><h3>Development</h3><div class="chips"><span>FastAPI</span><span>SQLAlchemy</span><span>SQLite</span><span>REST APIs</span><span>Pydantic</span><span>JSON</span></div></div>
-      <div class="sk" style="--c:#6366F1"><h3>ERP &amp; Enterprise</h3><div class="chips"><span>SAP ERP Foundations</span><span>DNS</span><span>DHCP</span></div></div>
-      <div class="sk" style="--c:#7C3AED"><h3>AI-assisted development</h3><div class="chips"><span>Claude AI</span><span>GitHub Copilot</span><span>n8n</span><span>Google Gemini</span><span>Prompt engineering</span></div></div>
+      <div class="sk" style="--c:#7C3AED"><h3>Cloud &amp; Identity</h3><div class="chips"><span>AWS</span><span>Microsoft Azure (AZ-900)</span><span>Microsoft 365</span><span>Entra ID (MFA, SSPR, RBAC)</span><span>VMware</span><span>Hyper-V</span><span>Virtuozzo</span></div></div>
+      <div class="sk" style="--c:#9333EA"><h3>Linux &amp; Systems Admin</h3><div class="chips"><span>Ubuntu Linux (CLI, user permissions, package management, SSSD, Nginx)</span><span>Windows Server 2019/2022</span><span>Active Directory (AD DS)</span><span>GPO</span></div></div>
+      <div class="sk" style="--c:#6366F1"><h3>Scripting &amp; Automation</h3><div class="chips"><span>Python</span><span>PowerShell (automation scripts, REST APIs)</span><span>Bash CLI</span><span>Git/GitHub</span><span>Terraform (IaC, learning)</span><span>CI/CD concepts</span></div></div>
+      <div class="sk" style="--c:#C026D3"><h3>Networking &amp; Security</h3><div class="chips"><span>DNS</span><span>DHCP</span><span>VLAN segmentation</span><span>WireGuard VPN</span><span>SSH hardening</span><span>Zero Trust principles</span><span>Least Privilege access control</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="certifications">
+  <div class="wrap">
+    <h2 class="sec">Certifications</h2>
+    <p class="sub2">Formal credentials backing up the hands-on labs.</p>
+    <div class="skgrid">
+      <div class="sk" style="--c:#7C3AED"><h3>Microsoft Azure Fundamentals (AZ-900)</h3><div class="chips"><span>2026</span></div></div>
+      <div class="sk" style="--c:#6366F1"><h3>SAP ERP Foundations</h3><div class="chips"><span>2024</span></div></div>
     </div>
   </div>
 </section>
@@ -229,5 +231,78 @@ footer{padding:1.5rem 0;color:var(--muted);font-size:.9rem}
   </div>
 </section>
 <div class="wrap"><footer>© 2026 Amrita Singh · Stockholm, Sweden</footer></div>
+
+<div class="modal-overlay" id="modalOverlay" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button type="button" class="modal-close" id="modalClose" aria-label="Close">&times;</button>
+    <h3 id="modalTitle"></h3>
+    <div class="modal-img" id="modalImg"></div>
+    <p class="cap" id="modalCaption"></p>
+  </div>
+</div>
+
+<script>
+// Placeholder architecture-style illustrations for each "What I build" card.
+// Swap the svg strings below for <img src="path/to/real-screenshot.png"> once
+// you have actual screenshots from each GitHub repo.
+const BUILD_INFO = {
+  "build-erp": {
+    title: "ERP systems",
+    caption: "4-layer architecture: terminal UI, REST API, web dashboard and PowerShell client on one business engine — see the Industrial ERP (Ice Cream Factory) repo for the full build.",
+    svg: `<svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg"><rect width="400" height="220" fill="var(--alt)"/><rect x="20" y="20" width="110" height="50" rx="8" fill="#fff" stroke="#7C3AED" stroke-width="1.5"/><text x="35" y="50" font-family="sans-serif" font-size="13" fill="#2A1A4D">Terminal UI</text><rect x="150" y="20" width="110" height="50" rx="8" fill="#fff" stroke="#7C3AED" stroke-width="1.5"/><text x="165" y="50" font-family="sans-serif" font-size="13" fill="#2A1A4D">REST API</text><rect x="280" y="20" width="100" height="50" rx="8" fill="#fff" stroke="#7C3AED" stroke-width="1.5"/><text x="292" y="50" font-family="sans-serif" font-size="13" fill="#2A1A4D">Dashboard</text><line x1="75" y1="70" x2="200" y2="120" stroke="#A78BFA" stroke-width="2"/><line x1="205" y1="70" x2="200" y2="120" stroke="#A78BFA" stroke-width="2"/><line x1="330" y1="70" x2="200" y2="120" stroke="#A78BFA" stroke-width="2"/><rect x="120" y="120" width="160" height="60" rx="10" fill="#7C3AED"/><text x="145" y="155" font-family="sans-serif" font-size="14" fill="#fff">SQLite / SQLAlchemy</text></svg>`
+  },
+  "build-ad": {
+    title: "Active Directory infrastructure",
+    caption: "IGDLA-modelled security groups with idempotent PowerShell automation, DNS/DHCP and VLAN segmentation — see the Enterprise Infrastructure & AD DS repo.",
+    svg: `<svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg"><rect width="400" height="220" fill="var(--alt)"/><rect x="140" y="20" width="120" height="50" rx="8" fill="#fff" stroke="#9333EA" stroke-width="1.5"/><text x="152" y="50" font-family="sans-serif" font-size="13" fill="#2A1A4D">Domain Controller</text><line x1="200" y1="70" x2="80" y2="120" stroke="#A78BFA" stroke-width="2"/><line x1="200" y1="70" x2="200" y2="120" stroke="#A78BFA" stroke-width="2"/><line x1="200" y1="70" x2="320" y2="120" stroke="#A78BFA" stroke-width="2"/><rect x="20" y="120" width="120" height="50" rx="8" fill="#fff" stroke="#9333EA" stroke-width="1.5"/><text x="35" y="150" font-family="sans-serif" font-size="12" fill="#2A1A4D">Users VLAN</text><rect x="140" y="120" width="120" height="50" rx="8" fill="#fff" stroke="#9333EA" stroke-width="1.5"/><text x="155" y="150" font-family="sans-serif" font-size="12" fill="#2A1A4D">IoT VLAN</text><rect x="260" y="120" width="120" height="50" rx="8" fill="#fff" stroke="#9333EA" stroke-width="1.5"/><text x="272" y="150" font-family="sans-serif" font-size="12" fill="#2A1A4D">Guest VLAN</text></svg>`
+  },
+  "build-net": {
+    title: "Secure cloud networks",
+    caption: "Dual-NIC segmentation isolating the public web subnet from the management subnet, with WireGuard VPN for encrypted admin access — see the Network Security & Zero Trust Lab repo.",
+    svg: `<svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg"><rect width="400" height="220" fill="var(--alt)"/><rect x="20" y="20" width="160" height="60" rx="8" fill="#fff" stroke="#6366F1" stroke-width="1.5"/><text x="35" y="55" font-family="sans-serif" font-size="13" fill="#2A1A4D">Web-Net (public)</text><rect x="220" y="20" width="160" height="60" rx="8" fill="#fff" stroke="#6366F1" stroke-width="1.5"/><text x="235" y="55" font-family="sans-serif" font-size="13" fill="#2A1A4D">Mgmt-Net (internal)</text><path d="M100 80 V120 H300 V80" fill="none" stroke="#67E8F9" stroke-width="3" stroke-dasharray="8 6"/><rect x="130" y="140" width="140" height="50" rx="8" fill="#6366F1"/><text x="150" y="170" font-family="sans-serif" font-size="13" fill="#fff">WireGuard VPN</text></svg>`
+  },
+  "build-iam": {
+    title: "Identity & access management",
+    caption: "Full identity lifecycle in Microsoft Entra ID: provisioning, least-privilege RBAC, MFA/SSPR and sign-in log auditing — see the Cloud Identity & Access Management repo.",
+    svg: `<svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg"><rect width="400" height="220" fill="var(--alt)"/><circle cx="200" cy="70" r="35" fill="#fff" stroke="#C026D3" stroke-width="1.5"/><text x="170" y="75" font-family="sans-serif" font-size="12" fill="#2A1A4D">Entra ID</text><line x1="170" y1="95" x2="80" y2="150" stroke="#A78BFA" stroke-width="2"/><line x1="200" y1="105" x2="200" y2="150" stroke="#A78BFA" stroke-width="2"/><line x1="230" y1="95" x2="320" y2="150" stroke="#A78BFA" stroke-width="2"/><rect x="20" y="150" width="120" height="45" rx="8" fill="#fff" stroke="#C026D3" stroke-width="1.5"/><text x="35" y="178" font-family="sans-serif" font-size="12" fill="#2A1A4D">RBAC groups</text><rect x="140" y="150" width="120" height="45" rx="8" fill="#fff" stroke="#C026D3" stroke-width="1.5"/><text x="158" y="178" font-family="sans-serif" font-size="12" fill="#2A1A4D">MFA / SSPR</text><rect x="260" y="150" width="120" height="45" rx="8" fill="#fff" stroke="#C026D3" stroke-width="1.5"/><text x="272" y="178" font-family="sans-serif" font-size="12" fill="#2A1A4D">Sign-in logs</text></svg>`
+  },
+  "build-ai": {
+    title: "AI-powered tools",
+    caption: "CyberSentry AI: an agent that reasons over network troubleshooting requests submitted through a form and returns a scored, structured recommendation — built with n8n and Google Gemini.",
+    svg: `<svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg"><rect width="400" height="220" fill="var(--alt)"/><rect x="30" y="30" width="130" height="50" rx="8" fill="#fff" stroke="#A855F7" stroke-width="1.5"/><text x="45" y="60" font-family="sans-serif" font-size="12" fill="#2A1A4D">Problem form</text><line x1="160" y1="55" x2="220" y2="100" stroke="#A78BFA" stroke-width="2"/><rect x="220" y="80" width="150" height="60" rx="10" fill="#A855F7"/><text x="245" y="115" font-family="sans-serif" font-size="13" fill="#fff">CyberSentry AI</text><line x1="220" y1="140" x2="160" y2="180" stroke="#A78BFA" stroke-width="2"/><rect x="30" y="160" width="150" height="45" rx="8" fill="#fff" stroke="#A855F7" stroke-width="1.5"/><text x="45" y="188" font-family="sans-serif" font-size="12" fill="#2A1A4D">Scorecard reply</text></svg>`
+  }
+};
+
+(function(){
+  const overlay = document.getElementById('modalOverlay');
+  const titleEl = document.getElementById('modalTitle');
+  const imgEl = document.getElementById('modalImg');
+  const capEl = document.getElementById('modalCaption');
+  const closeBtn = document.getElementById('modalClose');
+  let lastFocused = null;
+
+  function openModal(key){
+    const info = BUILD_INFO[key];
+    if(!info) return;
+    titleEl.textContent = info.title;
+    imgEl.innerHTML = info.svg;
+    capEl.textContent = info.caption;
+    lastFocused = document.activeElement;
+    overlay.hidden = false;
+    closeBtn.focus();
+  }
+  function closeModal(){
+    overlay.hidden = true;
+    if(lastFocused) lastFocused.focus();
+  }
+
+  document.querySelectorAll('.buildcard').forEach(function(btn){
+    btn.addEventListener('click', function(){ openModal(btn.getAttribute('data-modal')); });
+  });
+  closeBtn.addEventListener('click', closeModal);
+  overlay.addEventListener('click', function(e){ if(e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && !overlay.hidden) closeModal(); });
+})();
+</script>
 </body>
 </html>
